@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Ruflo Vision Studio</title>
+  <meta name="description" content="A fast browser-native AI image generation studio with live prompt tags, randomization, reference workflows, and mock generation previews." />
+  <link rel="stylesheet" href="./styles.css" />
+</head>
+<body>
+  <main class="shell">
+    <section class="hero panel">
+      <div>
+        <p class="eyebrow">Ruflo Vision Studio · June 2026 feature set</p>
+        <h1>Build production-ready image prompts in seconds.</h1>
+        <p class="lede">Live color-coded prompt anatomy, tag activation, prompt memory merging, reference-image guidance, batch variants, negatives, seeds, aspect ratios, and fast local preview generation.</p>
+      </div>
+      <div class="hero-actions">
+        <button id="randomizeAll" class="primary">Surprise me</button>
+        <button id="generate" class="glow">Generate preview</button>
+      </div>
+    </section>
+
+    <section class="studio-grid">
+      <aside class="panel controls">
+        <div class="section-title"><span>1</span><h2>Prompt Builder</h2></div>
+        <label>Core idea<textarea id="corePrompt" rows="4" placeholder="A solar-powered floating city above a turquoise ocean"></textarea></label>
+        <div class="toolbar">
+          <button id="mergePrevious">Merge previous prompt</button>
+          <button id="clearTags">Clear tags</button>
+          <button id="copyPrompt">Copy final</button>
+        </div>
+        <div id="tagGroups" class="tag-groups"></div>
+      </aside>
+
+      <section class="panel prompt-panel">
+        <div class="section-title"><span>2</span><h2>Live Prompt</h2></div>
+        <div id="promptPreview" class="prompt-preview" aria-live="polite"></div>
+        <label>Negative prompt<textarea id="negativePrompt" rows="3"></textarea></label>
+        <div class="merge-box">
+          <label>Previous prompt / reference notes<textarea id="previousPrompt" rows="3" placeholder="Paste an earlier prompt, client notes, or reference image description"></textarea></label>
+          <label class="file-drop">Reference image<input id="referenceImage" type="file" accept="image/*" /><span id="referenceStatus">Drop or choose an image</span></label>
+        </div>
+      </section>
+
+      <aside class="panel settings">
+        <div class="section-title"><span>3</span><h2>Generation Controls</h2></div>
+        <div class="control-row"><label>Model<select id="model"></select></label><label>Aspect<select id="aspect"></select></label></div>
+        <div class="control-row"><label>Quality<select id="quality"></select></label><label>Count<input id="count" type="number" min="1" max="8" value="4"></label></div>
+        <label>Style strength <input id="styleStrength" type="range" min="0" max="100" value="62"><output id="styleStrengthOut">62</output></label>
+        <label>Reference weight <input id="referenceWeight" type="range" min="0" max="100" value="38"><output id="referenceWeightOut">38</output></label>
+        <label>Seed <input id="seed" type="number" value="20260625"></label>
+      </aside>
+
+      <section class="panel output-panel">
+        <div class="section-title"><span>4</span><h2>Output Board</h2></div>
+        <div class="output-actions"><button id="iterateSelected">Use best as previous</button><button id="downloadPrompt">Download prompt JSON</button></div>
+        <div id="gallery" class="gallery"></div>
+      </section>
+    </section>
+  </main>
+  <template id="cardTemplate"><article class="image-card"><canvas width="640" height="640"></canvas><div><strong></strong><p></p></div></article></template>
+  <script src="./app.js" type="module"></script>
+</body>
+</html>
