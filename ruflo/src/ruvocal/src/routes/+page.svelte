@@ -173,7 +173,7 @@
 					<text x="74" y="790" font-size="38" font-weight="800">${title || "Untitled generation"}</text>
 					<text x="76" y="838" font-size="22" fill-opacity=".72">${sizeLabel} · seed ${seed + index}</text>
 				</g>
-			</svg>`)};`;
+			</svg>`)}`;
 	}
 
 	async function generateImages() {
